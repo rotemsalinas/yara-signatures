@@ -1,0 +1,54 @@
+rule txerRAT
+{
+    meta:
+        author = "rotem.salinas@gmail.com"
+        description = "TxerRAT Signature by Rotem Salinas"
+
+    strings:
+    	// upnpstart
+        $str1 = { 75 70 6E 70 73 74 61 72 74 }
+        // UPnp Devices Hosts 
+        $str2 = { 55 50 6E 70 20 44 65 76 69 63 65 73 20 48 6F 73 74 73 }
+        // Allows UPnP devices to be hosted on this computer. If this service is stopped, any hosted UPnP devices will stop functioning and no additional hosted devices can be added. If this service is disabled, any services that explicitly depend on it will fail to start
+        $str3 = { 41 6C 6C 6F 77 73 20 55 50 6E 50 20 64 65 76 69 63 65 73 20 74 6F 20 62 65 20 68 6F 73 74 65 64 20 6F 6E 20 74 68 69 73 20 63 6F 6D 70 75 74 65 72 2E 20 49 66 20 74 68 69 73 20 73 65 72 76 69 63 65 20 69 73 20 73 74 6F 70 70 65 64 2C 20 61 6E 79 20 68 6F 73 74 65 64 20 55 50 6E 50 20 64 65 76 69 63 65 73 20 77 69 6C 6C 20 73 74 6F 70 20 66 75 6E 63 74 69 6F 6E 69 6E 67 20 61 6E 64 20 6E 6F 20 61 64 64 69 74 69 6F 6E 61 6C 20 68 6F 73 74 65 64 20 64 65 76 69 63 65 73 20 63 61 6E 20 62 65 20 61 64 64 65 64 2E 20 49 66 20 74 68 69 73 20 73 65 72 76 69 63 65 20 69 73 20 64 69 73 61 62 6C 65 64 2C 20 61 6E 79 20 73 65 72 76 69 63 65 73 20 74 68 61 74 20 65 78 70 6C 69 63 69 74 6C 79 20 64 65 70 65 6E 64 20 6F 6E 20 69 74 20 77 69 6C 6C 20 66 61 69 6C 20 74 6F 20 73 74 61 72 74 }
+        // 6604E40C85448BCFAF238DAAAD9B1DC6B6B3008B2F1E0358FFFE10D92E701452CCB5F1A86C31
+        $str4 = { 36 36 30 34 45 34 30 43 38 35 34 34 38 42 43 46 41 46 32 33 38 44 41 41 41 44 39 42 31 44 43 36 42 36 42 33 30 30 38 42 32 46 31 45 30 33 35 38 46 46 46 45 31 30 44 39 32 45 37 30 31 34 35 32 43 43 42 35 46 31 41 38 36 43 33 31 }
+        //-----BEGIN RSA PUBLIC KEY-----
+		//MIIBCAKCAQEAraWJCGOetmHnY0QnEbybkBR2JDGA9wWSyXPkA1GDsLB0/nM5vHIX
+		//LQgiBpZcu/Br5mZudO12J76Wv2aM+fMl9owZzKiXLA+91PkiFocyvGpyGIjkJNFw
+		//s7MAD6jKkom+zfFvwNfDZo0V5weGnMbR62q7K4de8KcPNgkhEDMgFWteEB8fxl7C
+		//Iz1Azm03LlHSP14QkqGB6nGQ7EIB0rzme4wQE1kXwqlqtq+WgvaWVAqcA8Q/vssx
+		//4PJ/R3QfTg/EAgdNsV/chl1I6Giz31Xb119vfFdCOVIC1bKeQC1EKHSjlLeDmb3M
+		//pl9dDg+GQMUZ+rDDdjfC22mT+cnd4/WNiwIBAw==
+		//-----END RSA PUBLIC KEY-----
+        $str5 = { 2D 2D 2D 2D 2D 42 45 47 49 4E 20 52 53 41 20 50 55 42 4C 49 43 20 4B 45 59 2D 2D 2D 2D 2D 0A 4D 49 49 42 43 41 4B 43 41 51 45 41 72 61 57 4A 43 47 4F 65 74 6D 48 6E 59 30 51 6E 45 62 79 62 6B 42 52 32 4A 44 47 41 39 77 57 53 79 58 50 6B 41 31 47 44 73 4C 42 30 2F 6E 4D 35 76 48 49 58 0A 4C 51 67 69 42 70 5A 63 75 2F 42 72 35 6D 5A 75 64 4F 31 32 4A 37 36 57 76 32 61 4D 2B 66 4D 6C 39 6F 77 5A 7A 4B 69 58 4C 41 2B 39 31 50 6B 69 46 6F 63 79 76 47 70 79 47 49 6A 6B 4A 4E 46 77 0A 73 37 4D 41 44 36 6A 4B 6B 6F 6D 2B 7A 66 46 76 77 4E 66 44 5A 6F 30 56 35 77 65 47 6E 4D 62 52 36 32 71 37 4B 34 64 65 38 4B 63 50 4E 67 6B 68 45 44 4D 67 46 57 74 65 45 42 38 66 78 6C 37 43 0A 49 7A 31 41 7A 6D 30 33 4C 6C 48 53 50 31 34 51 6B 71 47 42 36 6E 47 51 37 45 49 42 30 72 7A 6D 65 34 77 51 45 31 6B 58 77 71 6C 71 74 71 2B 57 67 76 61 57 56 41 71 63 41 38 51 2F 76 73 73 78 0A 34 50 4A 2F 52 33 51 66 54 67 2F 45 41 67 64 4E 73 56 2F 63 68 6C 31 49 36 47 69 7A 33 31 58 62 31 31 39 76 66 46 64 43 4F 56 49 43 31 62 4B 65 51 43 31 45 4B 48 53 6A 6C 4C 65 44 6D 62 33 4D 0A 70 6C 39 64 44 67 2B 47 51 4D 55 5A 2B 72 44 44 64 6A 66 43 32 32 6D 54 2B 63 6E 64 34 2F 57 4E 69 77 49 42 41 77 3D 3D 0A 2D 2D 2D 2D 2D 45 4E 44 20 52 53 41 20 50 55 42 4C 49 43 20 4B 45 59 2D 2D 2D 2D 2D }
+        $str6 = "Microsoft Txer"
+        // $str7 = "Txer"
+        // $ip1 = "192.210.149.121"
+        // $ip2 = "23.226.230.47"
+        // $ip3 = "104.219.184.206"
+        // $ip4 = "130.133.110.14"
+        // $ip5 = "104.167.101.29"
+        // $ip6 = "205.185.116.116"
+        // $ip7 = "178.21.112.187"
+        // $ip8 = "195.154.119.113"
+        // $ip9 = "178.62.250.138"
+        // $ip10 = "192.254.75.102"
+        // $ip11 = "144.76.60.215"
+        // $ip12 = "178.62.125.224"
+        // $ip13 = "76.191.23.96"
+        // $ip14 = "46.38.239.179"
+        // $ip15 = "195.154.109.148"
+        // $ip16 = "192.3.173.88"
+        // $ip17 = "198.98.51.198"
+        // $ip18 = "80.232.246.79"
+        // $ip19 = "78.225.128.39"
+        // $ip20 = "108.61.165.198"
+        // $ip21 = "212.71.252.109"
+        // $ip22 = "194.249.212.109"
+        // $ip23 = "103.38.216.87"
+        
+    condition:
+        any of ($str*)
+}
+
